@@ -42,11 +42,12 @@
         <div>
           <label><strong>Data de Nascimento:</strong></label> {{ currentPessoa.dataNascimento}}
         </div>
-        <a class="badge badge-warning"
-           :href="'/pessoas/' + currentPessoa.id"
-        >
-          Edit
-        </a>
+        <button class="m-3 btn btn-sm btn-primary" >
+          <a class="badge badge-warning" :href="'/pessoas/' + currentPessoa.id">
+            Editar
+          </a>
+        </button>
+
       </div>
       <div v-else>
         <br />

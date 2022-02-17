@@ -4,19 +4,19 @@ class PessoaService {
         return http.get("/pessoas");
     }
     get(id) {
-        return http.get(`/tutorials/${id}`);
+        return http.get(`/pessoas/${id}`);
     }
     create(data) {
         return http.post("/pessoas", data);
     }
     update(id, data) {
-        return http.put(`/tutorials/${id}`, data);
+        return http.put(`/pessoas/${id}`, data);
     }
     delete(id) {
-        return http.delete(`/tutorials/${id}`);
+        return http.delete(`/pessoas/${id}`);
     }
     deleteAll() {
-        return http.delete(`/tutorials`);
+        return http.delete(`/pessoas`);
     }
     findById(id) {
         return http.get(`/pessoas?id=${id}`);
