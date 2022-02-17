@@ -3,7 +3,7 @@
     <div v-if="!submitted">
       <div class="form-group">
         <label for="id">Id</label>
-        <input
+        <input 
             type="text"
             class="form-control"
             id="id"
@@ -45,11 +45,11 @@
         />
       </div>
       <br>
-      <button @click="saveTutorial" class="btn btn-success">Salvar Pessoa</button>
+      <button @click="salvarPessoa" class="btn btn-success">Salvar Pessoa</button>
     </div>
     <div v-else>
       <h4>You submitted successfully!</h4>
-      <button class="btn btn-success" @click="newTutorial">Add</button>
+      <button class="btn btn-success" @click="novaPessoa">Add</button>
     </div>
   </div>
 </template>
@@ -69,25 +69,30 @@ export default {
     };
   },
   methods: {
-    saveTutorial() {
+    salvarPessoa() {
       var data = {
         id: this.pessoa.id,
         nome: this.pessoa.nome,
         cpf: this.pessoa.cpf,
         dataNascimento: this.pessoa.dataNascimento        
       };
-      PessoaService.create(data)
-          .then(response => {
-            this.pessoa.id = response.data.id;
-            console.log(response.data);
-            this.submitted = true;
-          })
-          .catch(e => {
-            console.log(e);
-          });
+      if(data.id != null){
+        PessoaService.create(data)
+            .then(response => {
+              this.pessoa.id = response.data.id;
+              console.log(response.data);
+              this.submitted = true;
+            })
+            .catch(e => {
+              console.log(e);
+            });
+      }else{
+        alert("Todos os campos são obrigatórios, preencha-os")
+      }
+
     },
 
-    newTutorial() {
+    novaPessoa() {
       this.submitted = false;
       this.pessoa = {};
     }
