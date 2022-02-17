@@ -26,8 +26,7 @@
       <div class="form-group">
         <label for="cpf">Cpf</label>
         <input
-            maxlength="11"
-            minlength="11"
+            v-mask="'###.###.###-##'"
             class="form-control"
             id="cpf"
             required
@@ -38,6 +37,7 @@
       <div class="form-group">
         <label for="dataNascimento">Data de Nascimento</label>
         <input
+            v-mask="'####-##-##'"
             type="text"
             class="form-control"
             id="dataNascimento"

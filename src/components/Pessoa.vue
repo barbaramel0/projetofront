@@ -16,13 +16,13 @@
       </div>
       <div class="form-group">
         <label for="cpf">Cpf</label>
-        <input type="text" class="form-control" id="cpf"
+        <input type="text"  v-mask="'###.###.###-##'" class="form-control" id="cpf"
                v-model="currentPessoa.cpf"
         />
       </div>
       <div class="form-group">
         <label for="dataNascimento">Data de nascimento</label>
-        <input type="text" class="form-control" id="dataNascimento"
+        <input type="text" v-mask="'####-##-##'" class="form-control" id="dataNascimento"
                v-model="currentPessoa.dataNascimento"
         />
       </div>
