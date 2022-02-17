@@ -13,36 +13,33 @@
       </div>
     </div>
     <div class="col-md-6">
-      <h4>Lista de Pessoas</h4>
+      <h4>Lista de Produtos</h4>
       <ul class="list-group">
         <li class="list-group-item"
             :class="{ active: index == currentIndex }"
-            v-for="(pessoa, index) in pessoas"
+            v-for="(produto, index) in produtos"
             :key="index"
-            @click="setActivePessoa(pessoa, index)"
+            @click="setActiveProduto(produto, index)"
         >
-          {{ pessoa.nome }}
+          {{ produto.descricao }}
         </li>
       </ul>
 
     </div>
     <div class="col-md-6">
-      <div v-if="currentPessoa">
+      <div v-if="currentProduto">
         <h4>Detalhes</h4>
         <div>
-          <label><strong>Id:</strong></label> {{ currentPessoa.id }}
+          <label><strong>Id:</strong></label> {{ currentProduto.id }}
         </div>
         <div>
-          <label><strong>Nome:</strong></label> {{ currentPessoa.nome }}
+          <label><strong>Descrição:</strong></label> {{ currentProduto.descricao }}
         </div>
         <div>
-          <label><strong>Cpf:</strong></label> {{ currentPessoa.cpf }}
-        </div>
-        <div>
-          <label><strong>Data de Nascimento:</strong></label> {{ currentPessoa.dataNascimento}}
+          <label><strong>Valor Unitário:</strong></label> {{ currentProduto.valoUnitario }}
         </div>
         <button class="m-3 btn btn-sm btn-primary" >
-          <a class="badge badge-warning" :href="'/pessoas/' + currentPessoa.id">
+          <a class="badge badge-warning" :href="'/produtos/' + currentProduto.id">
             Editar
           </a>
         </button>
@@ -50,28 +47,29 @@
       </div>
       <div v-else>
         <br />
-        <p>   Clique em uma pessoa <br> para acessar/editar detalhes <br> </p>
+        <p>   Clique em um produto <br> para acessar/editar detalhes <br> </p>
       </div>
     </div>
   </div>
 </template>
 <script>
-import PessoaService from "../services/PessoaService";
+import ProdutoService from "../services/ProdutoService";
 export default {
-  name: "pessoas-list",
+  name: "produtos-list",
   data() {
     return {
-      pessoas: [],
-      currentPessoa: null,
+      produtos: [],
+      currentProduto: null,
       currentIndex: -1,
-      nome: ""
+      descricao: "",
+      valoUnitario: 0
     };
   },
   methods: {
-    recuperaPessoa() {
-      PessoaService.getAll()
+    recuperaProdutos() {
+      ProdutoService.getAll()
           .then(response => {
-            this.pessoas = response.data;
+            this.produtos = response.data;
             console.log(response.data);
           })
           .catch(e => {
@@ -79,27 +77,34 @@ export default {
           });
     },
     refreshList() {
-      this.recuperaPessoa();
-      this.currentPessoa = null;
+      this.recuperaProdutos();
+      this.currentProduto = null;
       this.currentIndex = -1;
     },
-    setActivePessoa(pessoa, index) {
-      this.currentPessoa = pessoa;
+    setActiveProduto(produto, index) {
+      this.currentProduto = produto;
       this.currentIndex = index;
     },
     findById() {
-      PessoaService.findById(this.id)
+      this.currentProduto = null;
+      ProdutoService.findById(this.id)
           .then(response => {
-            this.pessoas = response.data;
-            console.log(response.data);
+            console.log(response.data)
+            if(response.data.length == 0){
+              this.recuperaProdutos();
+              alert("Produto não existe")
+              return;
+            }
+            this.produtos = response.data;
           })
           .catch(e => {
+            this.recuperaProdutos();
             console.log(e);
           });
     }
   },
   mounted() {
-    this.recuperaPessoa();
+    this.recuperaProdutos();
   }
 };
 </script>

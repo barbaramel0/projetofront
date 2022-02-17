@@ -19,6 +19,22 @@ export default new Router({
             path: "/add",
             name: "add",
             component: () => import("./components/AddPessoa")
-        }
+        },
+        {
+            path: "/produtos",
+            alias: "/produtos",
+            name: "produtos",
+            component: () => import("./components/ProdutoList")
+        },
+        {
+            path: "/produtos/:id",
+            name: "produtos-details",
+            component: () => import("./components/Produto")
+        },
+        {
+            path: "/addProdutos",
+            name: "addProdutos",
+            component: () => import("./components/AddProduto")
+        },
     ]
 });

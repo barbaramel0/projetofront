@@ -10,10 +10,13 @@
           <router-link to="/add" class="nav-link">Adicionar Pessoa</router-link>
         </li>
         <li class="nav-item">
-          <router-link to="/add" class="nav-link">Produtos</router-link>
+          <router-link to="/produtos" class="nav-link">Produtos</router-link>
         </li>
         <li class="nav-item">
-          <router-link to="/add" class="nav-link">Pedidos</router-link>
+          <router-link to="/addProdutos" class="nav-link">Adicionar Produtos</router-link>
+        </li>
+        <li class="nav-item">
+          <router-link to="/pedidos" class="nav-link">Pedidos</router-link>
         </li>
       </div>
     </nav>

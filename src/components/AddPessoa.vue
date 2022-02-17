@@ -164,6 +164,6 @@ export default {
 }
 
 h4 {
-  font-size: small;
+  font-size: medium;
 }
 </style>

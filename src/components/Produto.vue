@@ -1,41 +1,36 @@
 <template>
-  <div v-if="currentPessoa" class="edit-form">
-    <h4>Pessoa</h4>
+  <div v-if="currentProduto" class="edit-form">
+    <h4>Produto</h4>
     <form>
       <div class="form-group">
         <label for="id">Id</label>
         <input type="text" class="form-control" id="id"
-               v-model="currentPessoa.id"
+               v-model="currentProduto.id"
         />
       </div>
       <div class="form-group">
-        <label for="nome">Nome</label>
-        <input type="text" class="form-control" id="nome"
-               v-model="currentPessoa.nome"
+        <label for="descricao">Descrição</label>
+        <input type="text" class="form-control" id="descricao"
+               v-model="currentProduto.descricao"
         />
       </div>
       <div class="form-group">
-        <label for="cpf">Cpf</label>
-        <input type="text"  v-mask="'###.###.###-##'" class="form-control" id="cpf"
-               v-model="currentPessoa.cpf"
+        <label for="valoUnitario">Valor Unitário</label>
+        <input type="text"  class="form-control" id="valoUnitario"
+               v-model="currentProduto.valoUnitario"
         />
       </div>
-      <div class="form-group">
-        <label for="dataNascimento">Data de nascimento</label>
-        <input type="text" v-mask="'####-##-##'" class="form-control" id="dataNascimento"
-               v-model="currentPessoa.dataNascimento"
-        />
-      </div>
+
     </form>
- <br/>
+    <br/>
     <button class="badge badge-danger mr-2 btn-danger"
-            @click="deletePessoa"
+            @click="deleteProduto"
     >
       Remover
     </button>
 
     <button style="margin-left: 10px" type="submit" class="badge badge-success btn-primary"
-            @click="updatePessoa"
+            @click="updateProduto"
     >
       Atualizar
     </button>
@@ -43,24 +38,24 @@
   </div>
   <div v-else>
     <br />
-    <p>Selecione uma pessoa</p>
+    <p>Selecione um produto</p>
   </div>
 </template>
 <script>
-import PessoaService from "../services/PessoaService";
+import ProdutoService from "../services/ProdutoService";
 export default {
-  name: "Pessoa",
+  name: "Produto",
   data() {
     return {
-      currentPessoa: null,
+      currentProduto: null,
       message: ''
     };
   },
   methods: {
-    getPessoa(id) {
-      PessoaService.get(id)
+    getProduto(id) {
+      ProdutoService.get(id)
           .then(response => {
-            this.currentPessoa = response.data;
+            this.currentProduto = response.data;
             console.log(response.data);
           })
           .catch(e => {
@@ -69,12 +64,11 @@ export default {
     },
     updatePublished() {
       var data = {
-        id: this.currentPessoa.id,
-        nome: this.currentPessoa.nome,
-        cpf: this.currentPessoa.cpf,
-        dataNascimento:  this.currentPessoa.dataNascimento
+        id: this.currentProduto.id,
+        descricao: this.currentProduto.descricao,
+        valoUnitario: this.currentProduto.valoUnitario
       };
-      PessoaService.update(this.currentPessoa.id, data)
+      ProdutoService.update(this.currentProduto.id, data)
           .then(response => {
             console.log(response.data);
           })
@@ -82,8 +76,8 @@ export default {
             console.log(e);
           });
     },
-    updatePessoa() {
-      PessoaService.update(this.currentPessoa.id, this.currentPessoa)
+    updateProduto() {
+      ProdutoService.update(this.currentProduto.id, this.currentProduto)
           .then(response => {
             console.log(response.data);
 
@@ -94,11 +88,11 @@ export default {
             console.log(e);
           });
     },
-    deletePessoa() {
-      PessoaService.delete(this.currentPessoa.id)
+    deleteProduto() {
+      ProdutoService.delete(this.currentProduto.id)
           .then(response => {
             console.log(response.data);
-            this.$router.push({ name: "pessoas" });
+            this.$router.push({ name: "produtos" });
           })
           .catch(e => {
             console.log(e);
@@ -107,11 +101,12 @@ export default {
   },
   mounted() {
     this.message = '';
-    this.getPessoa(this.$route.params.id);
+    this.getProduto(this.$route.params.id);
   }
 };
 </script>
 <style>
+
 .edit-form {
   max-width: 300px;
   margin: auto;
