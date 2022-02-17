@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <nav class="navbar navbar-expand navbar-dark bg-dark">
+    <nav class="navbar navbar-expand navbar-custom">
       <router-link to="/" class="navbar-brand">Escriba Projeto</router-link>
       <div class="navbar-nav mr-auto">
         <li class="nav-item">
@@ -36,6 +36,24 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+}
+/* change the background color */
+.navbar-custom {
+  background-color:darkgoldenrod;
+}
+/* change the brand and text color */
+.navbar-custom .navbar-brand,
+.navbar-custom .navbar-text {
+  color:black;
+}
+/* change the link color */
+.navbar-custom .navbar-nav .nav-link {
+  color: white;
+}
+/* change the color of active or hovered links */
+.navbar-custom .nav-item.active .nav-link,
+.navbar-custom .nav-item:focus .nav-link,
+.navbar-custom .nav-item:hover .nav-link {
+  color: burlywood;
 }
 </style>

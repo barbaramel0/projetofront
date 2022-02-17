@@ -86,7 +86,8 @@ export default {
       PessoaService.update(this.currentPessoa.id, this.currentPessoa)
           .then(response => {
             console.log(response.data);
-            this.message = 'Pessoa atualizada com sucesso!';
+            this.message = 'Dados atualizados com sucesso atualizada com sucesso!';
+
           })
           .catch(e => {
             console.log(e);

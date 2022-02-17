@@ -6,8 +6,9 @@
                v-model="id"/>
         <div class="input-group-append">
           <button class="btn btn-outline-secondary" type="button" @click="findById">
-            Search
+            Buscar
           </button>
+
         </div>
       </div>
     </div>
@@ -18,14 +19,12 @@
             :class="{ active: index == currentIndex }"
             v-for="(pessoa, index) in pessoas"
             :key="index"
-            @click="setActiveTutorial(pessoa, index)"
+            @click="setActivePessoa(pessoa, index)"
         >
           {{ pessoa.nome }}
         </li>
       </ul>
-      <button class="m-3 btn btn-sm btn-danger" @click="removeAllTutorials">
-        Remover
-      </button>
+
     </div>
     <div class="col-md-6">
       <div v-if="currentPessoa">
@@ -51,7 +50,7 @@
       </div>
       <div v-else>
         <br />
-        <p> Para detalhes selecione uma pessoa...</p>
+        <p>   Clique em uma pessoa <br> para acessar/editar detalhes <br> </p>
       </div>
     </div>
   </div>
@@ -84,7 +83,7 @@ export default {
       this.currentPessoa = null;
       this.currentIndex = -1;
     },
-    setActiveTutorial(pessoa, index) {
+    setActivePessoa(pessoa, index) {
       this.currentPessoa = pessoa;
       this.currentIndex = index;
     },
@@ -120,5 +119,13 @@ export default {
   text-align: left;
   max-width: 750px;
   margin: auto;
+
+}
+p{
+  background-color:darkgoldenrod ;
+  color:white;
+  border-radius: 10px;
+  left: 50px;;
+  text-align: center;
 }
 </style>
