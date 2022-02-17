@@ -15,9 +15,7 @@
         <li class="nav-item">
           <router-link to="/addProdutos" class="nav-link">Adicionar Produtos</router-link>
         </li>
-        <li class="nav-item">
-          <router-link to="/pedidos" class="nav-link">Pedidos</router-link>
-        </li>
+
       </div>
     </nav>
     <div class="container mt-3">
@@ -42,12 +40,13 @@ export default {
 }
 /* change the background color */
 .navbar-custom {
-  background-color:darkgoldenrod;
+  background-color:#2c3e50;
 }
 /* change the brand and text color */
 .navbar-custom .navbar-brand,
 .navbar-custom .navbar-text {
-  color:black;
+  color:gold;
+  padding-left: 20px;
 }
 /* change the link color */
 .navbar-custom .navbar-nav .nav-link {
@@ -59,4 +58,5 @@ export default {
 .navbar-custom .nav-item:hover .nav-link {
   color: burlywood;
 }
+
 </style>

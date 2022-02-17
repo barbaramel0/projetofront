@@ -9,6 +9,21 @@ npm install
 ```
 npm run serve
 ```
+### To run service with API, install json-server
+```
+# json file in directory ./model-data
+npm install -g json-server
+```
+### Run API
+```
+json-server --watch data.json
+```
+### API's 
+```
+• http://localhost:3000/pessoas
+• http://localhost:3000/produtos
+• http://localhost:3000/pedidos
+```
 
 ### Compiles and minifies for production
 ```
