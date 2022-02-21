@@ -35,6 +35,21 @@ export default new Router({
             path: "/addProdutos",
             name: "addProdutos",
             component: () => import("./components/AddProduto")
+        },        {
+            path: "/pedidos",
+            alias: "/pedidos",
+            name: "pedidos",
+            component: () => import("./components/PedidoList")
+        },
+        {
+            path: "/pedidos/:id",
+            name: "pedidos-details",
+            component: () => import("./components/Pedido")
+        },
+        {
+            path: "/addPedidos",
+            name: "addPedidos",
+            component: () => import("./components/AddPedido")
         },
     ]
 });

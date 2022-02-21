@@ -15,6 +15,12 @@
         <li class="nav-item">
           <router-link to="/addProdutos" class="nav-link">Adicionar Produtos</router-link>
         </li>
+        <li class="nav-item">
+          <router-link to="/pedidos" class="nav-link">Pedidos</router-link>
+        </li>
+        <li class="nav-item">
+          <router-link to="/addPedidos" class="nav-link">Adicionar Pedidos</router-link>
+        </li>
 
       </div>
     </nav>
