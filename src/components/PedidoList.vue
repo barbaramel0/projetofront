@@ -30,16 +30,16 @@
       <div v-if="currentPedido">
         <h4>Detalhes</h4>
         <div>
-          <label><strong>Nº Pedido:</strong></label> {{ currentPedido.id }}
+          <label><strong>Nº do Pedido:</strong></label> {{ currentPedido.id }}
         </div>
         <div>
-          <label><strong>Id Cliente:</strong></label> {{ currentPedido.cliente.id }}
+          <label><strong>Id do Cliente:</strong></label> {{ currentPedido.cliente.id }}
         </div>
         <div>
-          <label><strong>Nome Cliente:</strong></label> {{ currentPedido.cliente.nome }}
+          <label><strong>Nome do  Cliente:</strong></label> {{ currentPedido.cliente.nome }}
         </div>
         <div>
-          <label><strong>Valor Total:</strong></label> {{ currentPedido.valorTotal }}
+          <label><strong>Valor Total do Pedido:</strong></label> {{ currentPedido.valorTotal }}
         </div>
         <div>
           <label><strong>Data do Pedido:</strong></label> {{ currentPedido.dataEmissao }}

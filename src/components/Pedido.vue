@@ -9,29 +9,55 @@
         />
       </div>
       <div class="form-group">
-        <label for="nome">Id do Cliente</label>
-        <input type="text" class="form-control" id="nome"
+        <label for="idCliente">Id do Cliente</label>
+        <input type="text" class="form-control" id="idCliente"
                v-model="currentPedido.idCliente"
         />
       </div>
       <div class="form-group">
-        <label for="valorTotal">Valor total</label>
-        <input type="text"  class="form-control" id="valorTotal"
-               v-model="currentPedido.valorTotal"
+        <label for="nomeCliente">Nome do Cliente</label>
+        <input type="text" class="form-control" id="nomeCliente"
+               v-model="currentPedido.nomeCliente"
         />
       </div>
+
       <div class="form-group">
         <label for="dataPedido">Data do pedido</label>
         <input type="text"  class="form-control" id="dataPedido"
                v-model="currentPedido.dataPedido"
         />
       </div>
-      <div class="form-group">
-        <label for="dataPedido">Itens do pedido</label>
-        <input type="text"  class="form-control" id="itens"
-               v-model="currentPedido.itens"
+<!--      <div class="form-group">-->
+<!--        <label for="dataPedido">Itens do pedido</label>-->
+<!--        <input type="text"  class="form-control" id="itens"-->
+<!--               v-model="currentPedido.itens"-->
+<!--        />-->
+<!--      </div>-->
+
+<!--       <div class="form-group">-->
+
+      <div   v-for="item in currentPedido.itens"  v-bind:key="item.id">
+        <label for="itemId">Item</label>
+        <input type="text"  class="form-control" id="itemId"
+               v-model="item.id"
         />
+
+<!--        {{ item.id}}<br>-->
+        <label>Produto Id</label> {{ item.produto.id}}<br>
+        <label><strong>Produto Descrição:</strong></label> {{ item.produto.descricao}}<br>
+        <label><strong>Valor:</strong></label> {{ item.valor}}<br>
+        <label><strong>Quantidade:</strong></label> {{ item.quantidade}}<br>
+        <label><strong>Subtotal:</strong></label> {{ item.subtotal}}<br>
+
+        <br>
       </div>
+<!--       </div>-->
+      <div class="form-group">
+       <label for="valorTotal">Valor total</label>
+        <input type="text"  class="form-control" id="valorTotal"
+             v-model="currentPedido.valorTotal"
+      />
+    </div>
     </form>
     <br/>
     <button class="badge badge-danger mr-2 btn-danger"

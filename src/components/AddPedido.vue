@@ -2,7 +2,7 @@
   <div class="submit-form">
     <div v-if="!submitted">
       <div class="form-group">
-        <label for="id">Id</label>
+        <label for="id">N° do Pedido </label>
         <input
             type="text"
             class="form-control"
@@ -13,37 +13,47 @@
         />
       </div>
       <div class="form-group">
-        <label for="nome">Nome</label>
+        <label for="idCliente">Id do Cliente</label>
         <input
             type="text"
             class="form-control"
-            id="nome"
+            id="idCliente"
             required
-            v-model="pedido.nome"
-            name="nome"
+            v-model="cliente.id"
+            name="idCliente"
         />
       </div>
       <div class="form-group">
-        <label for="cpf">Cpf</label>
+        <label for="nomeCliente">Nome do Cliente</label>
         <input
-            v-mask="'###.###.###-##'"
+            type="text"
             class="form-control"
-            id="cpf"
+            id="nomeCliente"
             required
-            v-model="pedido.cpf"
-            name="cpf"
+            v-model="cliente.nome"
+            name="nomeCliente"
         />
       </div>
       <div class="form-group">
-        <label for="dataNascimento">Data de Nascimento</label>
+        <label for="valorTotal">valorTotal</label>
+        <input
+            class="form-control"
+            id="valorTotal"
+            required
+            v-model="pedido.valorTotal"
+            name="valorTotal"
+        />
+      </div>
+      <div class="form-group">
+        <label for="dataEmissao">Data de Emissao</label>
         <input
             v-mask="'####-##-##'"
             type="text"
             class="form-control"
-            id="dataNascimento"
+            id="dataEmissao"
             required
-            v-model="pedido.dataNascimento"
-            name="dataNascimento"
+            v-model="pedido.dataEmissao"
+            name="dataEmissao"
         />
       </div>
       <br>
@@ -67,9 +77,10 @@ export default {
     return {
       pedido: {
         id: null,
-        nome: "",
-        cpf: "",
-        dataNascimento: ""
+        idCliente: null,
+        nomeCliente:"",
+        valorTotal: "",
+        dataEmissao: ""
       },
       submitted: false
     };
@@ -80,8 +91,8 @@ export default {
       var data = {
         id: this.pedido.id,
         nome: this.pedido.nome,
-        cpf: this.pedido.cpf,
-        dataNascimento: this.pedido.dataNascimento
+        valorTotal: this.pedido.valorTotal,
+        dataEmissao: this.pedido.dataEmissao
       };
      
 
